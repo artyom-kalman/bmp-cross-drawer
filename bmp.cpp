@@ -16,7 +16,7 @@ bool isValidBmpHeader(const char* header) {
     return header[0] == 'B' && header[1] == 'M';
 }
 
-BMPFile readBmpFile(const char* path) {
+BMPFile readBmpFile(const std::string path) {
     std::fstream file(path);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file");
@@ -54,7 +54,7 @@ BMPFile readBmpFile(const char* path) {
     return bmp;
 }
 
-void writeBmpFile(BMPFile& bmp, const char* path) {
+void writeBmpFile(BMPFile& bmp, const std::string path) {
     std::ofstream file(path);
     if (!file.is_open()) {
         throw std::runtime_error("Could not open file");

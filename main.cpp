@@ -4,15 +4,15 @@
 #include "draw.cpp"
 #include "display.cpp"
 
-char* getUserInput(const char* prompt) {
-    char* input = new char[256];
+std::string getUserInput(const std::string prompt) {
+    std::string input;
     std::cout << prompt;
-    std::cin >> input;
+    std::getline(std::cin, input);
     return input;
 }
 
 int main() {
-    const char* inputPath = getUserInput("Enter input BMP file name: ");
+    const std:: string inputPath = getUserInput("Enter input BMP file name: ");
 
     BMPFile bmp = readBmpFile(inputPath);
 
@@ -25,7 +25,7 @@ int main() {
     std::cout << "New Image" << std::endl;
     displayImage(bmp);
 
-    const char* outputPath = getUserInput("Enter output BMP file name: ");
+    const std::string outputPath = getUserInput("Enter output BMP file name: ");
     writeBmpFile(bmp, outputPath);
 
     return 0;
